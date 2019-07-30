@@ -1,0 +1,29 @@
+.post-list {
+  font-size: 14px;
+  width: 600px;
+  margin: 0 auto;
+  &__article {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    article {
+      h3 {
+        font-weight: bold;
+        padding: 5px 0;
+        font-size: 18px;
+      }
+      p {
+        padding: 5px;
+      }
+    }
+  }
+  &__writer {
+    text-align: right;
+  }
+  &__comments {
+    margin-top: 20px;
+    li {
+      padding: 5px; 
+      border-top: 1px solid #ddd;
+    }
+  }
+}
