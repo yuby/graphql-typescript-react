@@ -11,7 +11,7 @@ import Post from '../index';
 import { GET_POSTS } from '../../../graphql/queries/post';
 
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe("Post Init", () => {
   test('Init', () => {
@@ -25,8 +25,8 @@ describe("Post Init", () => {
   });
 });
 
-describe("Post Normal Run", () => {
-  test('Fetch GQ query with Normal data', async () => {
+describe("Post with data", () => {
+  test('Loaded normal', async () => {
     const mocks = [
       {
         request: {
@@ -67,7 +67,10 @@ describe("Post Normal Run", () => {
                     "body": "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et",
                   }
                 ],
-                "__typename": "Post"
+                "like": {
+                  "postId": 1,
+                  "isLike": false
+                }
               },
             ]
           }
@@ -86,14 +89,18 @@ describe("Post Normal Run", () => {
 
     await wait(0);
 
-    const postList = getByTestId('post-list');
-    const commentList = getByTestId('comment-list');
+    describe('render check', () => {
+      const postList = getByTestId('post-list');
+      const commentList = getByTestId('comment-list');
 
-    expect(postList.children.length).toBe(1);
-    expect(commentList.children.length).toBe(5);
+      expect(postList.children.length).toBe(1);
+      expect(commentList.children.length).toBe(5);
+    });
+
+    
   });
 
-  test('Fetch GQ query with Empty data', async () => {
+  test('Loaded empty data', async () => {
     const mocks = [
       {
         request: {
@@ -119,14 +126,16 @@ describe("Post Normal Run", () => {
 
     await wait(0);
 
-    const postList = getByTestId('post-list');
+    describe('render check', () => {
+      const postList = getByTestId('post-list');
 
-    expect(postList.children.length).toBe(0);
+      expect(postList.children.length).toBe(0);
+    });
   });
 });
 
-describe("Post Error", () => {
-  test('Fetch GQ query with error', async () => {
+describe("Post with Error", () => {
+  test('Loaded error', async () => {
     const mocks = [
       {
         request: {

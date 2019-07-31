@@ -15,6 +15,18 @@ export const GET_POSTS = gql`
         id
         body
       }
+      like {
+        postId
+        isLike
+      }
+    }
+  }
+`;
+
+export const SET_LIKE = gql`
+  mutation SetLike($like: LikeInput!) {
+    setLike(like: $like) {
+      postId
     }
   }
 `;

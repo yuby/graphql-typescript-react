@@ -12,6 +12,7 @@
     "interface-name": false,
     "strict-null-checks": false,
     "semicolon": [true, "always"],
-    "jsx-wrap-multiline": false
+    "jsx-wrap-multiline": false,
+    "jsx-no-lambda": false
   }
 }
